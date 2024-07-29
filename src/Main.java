@@ -1,8 +1,7 @@
 import java.sql.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,6 +17,18 @@ public class Main {
         System.out.println("oldest programming language");
         System.out.println( oldestProgLanguage);
 
+        List<Packtage> packtages = new ArrayList<>();
+       // LocalDateTime departureTime = LocalDateTime.of();
+        packtages.add(new Packtage("Moscow","Berlin",23.3,LocalDateTime.of(2024,7,12,12,30)));
+        packtages.add(new Packtage("Hof","Berlin",12.2,LocalDateTime.of(2024,7,23,20,20)));
+        packtages.add(new Packtage("Tashkent","Berlin",5.6,LocalDateTime.of(2024,6,16,23,12)));
+        packtages.add(new Packtage("Chelyabinsk","Berlin",54.3,LocalDateTime.of(2024,5,12,13,55)));
+        Optional<Packtage> newparcel = packtages.stream()
+                .filter(pack-> pack.getReceiptOfCiti().equalsIgnoreCase("Berlin"))
+                .max(Comparator.comparing(Packtage::getDepartureTime));
+        System.out.println(newparcel);
 
-    }
-}
+
+
+
+}}
